@@ -1,0 +1,676 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>SURAJ BIO</title>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html{
+    overflow-y: scroll;
+}
+
+body{
+    background-color: transparent;
+    background: url('https://i.imgur.com/ApQKtQZ.jpeg') fixed no-repeat;
+    background-size: cover;
+    max-height: 300rem;
+    border: 15px solid transparent !important;
+    -o-border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+       border-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(37.8%, rgb(245, 245, 245)),color-stop(48.8%, rgb(245, 245, 245)),color-stop(53.1%, rgb(254, 254, 254)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75))) !important;
+       border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+a:hover{
+  opacity: 1;
+  color: black;
+}
+/*----------------
+Push Bar
+------------------*/
+.bar-cont{
+    position: relative;
+    top: -215px;
+}
+
+.push-bar{
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 200px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.creator{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.creator #codepen{
+  text-align: center;
+  font-size: 180px;
+  margin-top: 30px;
+  border: 2px solid white;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 8px 5px grey;
+          box-shadow: 0px 8px 5px grey;
+}
+
+
+.arrow{
+	margin: auto;
+    padding: 0;
+    margin-top: 50px;
+    margin-bottom: 0;
+    max-width: 80px;
+    height: 80px;
+    border: 3px solid black;
+    border-radius: 50%;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 45%;
+    background-color: black;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    -webkit-animation: blockAppear .6s ease-in-out;
+            animation: blockAppear .6s ease-in-out;
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+}
+
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+	40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+	60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+	40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+	60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+/*-----------------
+Cards
+------------------*/
+.main-cont{
+    padding: 0;
+    margin: 0;
+    top: -215px;
+}
+
+.news-row {
+	margin: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.news-block{
+    margin: auto;
+    padding: 0;
+    background-color: transparent;
+    max-width: 1060px;
+    min-width: 100px;
+    border: 20px solid transparent;
+    -o-border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+       border-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(37.8%, rgb(245, 245, 245)),color-stop(48.8%, rgb(245, 245, 245)),color-stop(53.1%, rgb(254, 254, 254)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75))) !important;
+       border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    -webkit-animation: blockAppear .6s ease-in-out;
+            animation: blockAppear .6s ease-in-out;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+}
+
+.underlay{
+  /*display: none;*/
+  margin: 0;
+  padding: 0;
+  max-height: 350px;
+  max-width: 340px;
+}
+
+.card{
+    margin: 0;
+    width: 340px;
+    max-height: 350px;
+    max-width: 340px;
+    background-color: transparent;
+    border: 20px solid transparent !important;
+    -o-border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+       border-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75))) !important;
+       border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+    -webkit-transition: -webkit-transform 0.6s ease;
+    transition: -webkit-transform 0.6s ease;
+    transition: transform 0.6s ease;
+    transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+    -webkit-animation: blockAppear .6s ease-in-out;
+            animation: blockAppear .6s ease-in-out;
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+}
+
+@-webkit-keyframes blockAppear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px) ;
+            transform: translateY(20px) ;
+  }
+  ready.css:1
+  40% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+    -webkit-box-shadow: 0 10px 35px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.15);
+            box-shadow: 0 10px 35px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.15);
+  }
+  ready.css:1
+  80% {
+    opacity: 1;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  ready.css:1
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+@keyframes blockAppear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px) ;
+            transform: translateY(20px) ;
+  }
+  ready.css:1
+  40% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+    -webkit-box-shadow: 0 10px 35px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.15);
+            box-shadow: 0 10px 35px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.15);
+  }
+  ready.css:1
+  80% {
+    opacity: 1;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  ready.css:1
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+.card:hover{
+    z-index: 999;
+    max-height: 800px;
+    width: 400px;
+    max-width: 400px;
+    border: none !important;
+    border-right: 60px solid transparent !important;
+    border-bottom: 20px solid transparent !important;
+    margin-right: -20px;
+	  -webkit-transform:  translate(-30px, -50px);
+	          transform:  translate(-30px, -50px);
+}
+
+.card:before{
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  -webkit-transition: -webkit-box-shadow 0.6s ease;
+  transition: -webkit-box-shadow 0.6s ease;
+  transition: box-shadow 0.6s ease;
+  transition: box-shadow 0.6s ease, -webkit-box-shadow 0.6s ease;
+}
+
+.card:hover:before
+{
+  max-width: 300px;
+  -webkit-box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
+          box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
+}
+
+.card:hover .card-img-top{
+	height: 300px;
+}
+
+.card:hover .card-block {
+  width: 300px;
+	background-image: -webkit-gradient(linear,right bottom, left top,from(rgb(72, 85, 108)),color-stop(50%, rgb(27, 33, 43)),color-stop(51%, rgb(20, 25, 34)),to(rgb(53, 59, 69)));
+	background-image: linear-gradient(to top left,rgb(72, 85, 108) 0%,rgb(27, 33, 43) 50%,rgb(20, 25, 34) 51%,rgb(53, 59, 69) 100%);
+}
+
+.card:hover .card-title{
+    color: white;
+}
+
+.card:hover .card-text{
+	  /*display: block !important;*/
+    color: white;
+}
+
+.card-block{
+    background-color: transparent;
+    background-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(37.8%, rgb(245, 245, 245)),color-stop(48.8%, rgb(245, 245, 245)),color-stop(53.1%, rgb(254, 254, 254)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75)));
+    background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%);
+    background-repeat: no-repeat;
+}
+
+.card-text {
+	display: none;
+}
+
+.card-img-top{
+    width: 300px;
+    height: 250px;
+    background-color: #fff;
+    -webkit-transition: height 0.8s ease;
+    transition: height 0.8s ease;
+}
+
+@media (max-width: 1120px){
+    .bar-cont{
+        width: 100%;
+    }
+    .news-block{
+       max-width: 720px;
+    }
+    .card:hover{
+      margin-right: -20px;
+    }
+    .card:hover .card-block{
+      width: 300px;
+    }
+}
+
+@media (max-width: 800px){
+    .news-block{
+       min-width: 380px;
+    }
+    .card:hover{
+      border-left: 20px solid transparent !important;
+      margin-right: -40px;
+      -webkit-transform:  translate(0, -50px);
+              transform:  translate(0, -50px);
+    }
+    .card:hover:before{
+      -webkit-box-shadow: 0px 60px 40px RGBA(142, 142, 142, .5);
+              box-shadow: 0px 60px 40px RGBA(142, 142, 142, .5);
+    }
+    .card:hover .card-block{
+      width: 300px;
+    }
+}
+
+@media (max-width: 580px){
+  .news-block{
+     max-width: 380px;
+  }
+}
+/*-----------------
+Pixel Grid
+------------------*/
+.pixel-grid{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: 15;
+  opacity: .2;
+  display: none;
+}
+
+#toggle-grid{
+  position: fixed;
+  top: 150px;
+  right: 2px;
+  z-index: 16;
+  color: white;
+  display: inline-block;
+  /*border: 2px ridge white;*/
+  font-size: 1.8em;
+  width: 1.8em;
+  text-align: center;
+  line-height: 1.85em;
+  background: #666;
+  border-radius: 50%; /* or 50% width & line-height */
+  opacity: .3;
+  -webkit-transition: background 1s ease-out;
+  transition: background 1s ease-out;
+  display: none;
+}
+
+#toggle-grid:hover{
+  cursor: pointer;
+  background: repeating-linear-gradient(to bottom right,rgb(0, 0, 0) 0%,rgb(226, 226, 226) 61.4%,rgb(226, 226, 226) 66.9%,rgb(226, 226, 226) 76.6%,rgb(226, 226, 226) 88.7%,rgb(255, 255, 255) 100%);
+}
+
+.orange{
+  color: orange !important;
+  -webkit-box-shadow: 2px 2px 3px #888;
+          box-shadow: 2px 2px 3px #888;
+  opacity: 1 !important;
+}
+/*------------------*/
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<html>
+<head>
+<title>PROJECTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="https://instagram.fblr5-1.fna.fbcdn.net/v/t51.2885-15/e35/62363539_145004263345111_107638049305369553_n.jpg?_nc_ht=instagram.fblr5-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=YvUtgV4IgfgAX9VWs-P&oh=52403287d8ab0fef87b42a70a016c90d&oe=5F0CA7C0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../static/css/bio.css">
+</head>
+<body>
+
+<div><img src="https://www.seanet.com/~owenmp/hvd-web/play-aids/grid-lg.gif" class="pixel-grid" /></div>
+<div><i id="toggle-grid" class="fa fa-th"></i></div>
+
+
+<div class="container bar-cont">
+<div class="row">
+<div class="col-md-4 col-sm-6 push-bar">
+<div class="creator">
+<a href="https://suraj038.github.io/" target="_blank"><i id="codepen" class="fab fa-yarn"></i></a>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-2 arrow"></div>
+</div>
+</div>
+
+
+<div class="container-fluid main-cont">
+<div class="row news-row">
+<div class="container-fluid col-md-12 col-sm-6 justify-content-center news-block"><br>
+<div class="bg-transparent">
+    <h1 class="text-center text-dark">PROJECTS</h1>
+</div><br>
+<div class="card-group">
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRPFugEvBZNxizpArtzugapTr6FGfZftSSt0uT3ltdWLqft7j-y&usqp=CAU')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Diabetic Retinopathy Detection<hr></h5>
+<p class="card-text">Diabetic Retinopathy is a disease with an increasing prevalence and the main cause of blindness among working-age population.
+    A GUI based system has been made using Tkinter and I used heidiSQL to maintain and store a list of predictions with their patient id and name.
+ <a href="https://github.com/suraj038/Diabetic_Retinopathy_Detection"><u>Read More...</u></a></p>
+ <a href="https://github.com/suraj038/Diabetic_Retinopathy_Detection"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://images.pexels.com/photos/38568/apple-imac-ipad-workplace-38568.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">T-Shirt Website With Stripe Payment Integration<hr></h5>
+<p class="card-text">E-commerce website for t-shirt store with stripe payment integration!, Here user can buy a t-shirt through online portal and can make payment through stripe payment integration. Have built an admin pannel where admin can add or modify the products.!!! <a href="https://github.com/suraj038/React-E-commerce-Website-With-Stripe-Payment-Integration"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/React-E-commerce-Website-With-Stripe-Payment-Integration"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">React Gatsby App Project<hr></h5>
+<p class="card-text">A React gatsby app website, where user can join and buy some of the courses, and can make payment through snipcart payment integration. Here i have also used contentful site. have a look into it.. <a href="https://github.com/suraj038/React-Gatsby-App-Project"><u>Read More...</u></a></p>
+<a href="https://surajecomwebsite.netlify.app/"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div><br>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://images.pexels.com/photos/248370/pexels-photo-248370.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Self Driving Car<hr></h5>
+<p class="card-text">Self Driving Car Using Covolutinal Neural Networks Via Using NVIDIA Model Architecture for End To End Self Driving Car And For Simulation Using Udacity Open Source Unity Self Driving Car Simulator <a href="https://github.com/suraj038/Self_Driving_Car_CNN_Model"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/Self_Driving_Car_CNN_Model"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://img.scoop.it/Kd_IfubBiR8oOxz4IffeGDl72eJkfbmt4t8yenImKBVvK0kTmF0xjctABnaLJIm9')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Kirana Product Billing Website<hr></h5>
+<p class="card-text">Kirana Product Billing website built for the contest of TCS INFRAMIND 3, here user can scan the products through web cam and get the details of products like product name, price of the product etc.. in the table format. <a href="https://www.youtube.com/watch?v=HWO1-MHQl00&feature=youtu.be"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/KIRANA-PRODUCT-BILLING-WEBSITE-TCS_INFRAMIND3"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://images.pexels.com/photos/4198377/pexels-photo-4198377.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"></div>
+ <div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Ordering Food Online Website<hr></h5>
+<p class="card-text">Ordering food online website built for web 7TH sem mini project. Here user can order food online, have also made admin portal where admin can track the orders, and different restaurants can keep there food in the website and they can manage and track the orders.!!!<a href="https://github.com/suraj038/Ordering-Food-Online-Website"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/Ordering-Food-Online-Website"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://media.istockphoto.com/photos/doctor-with-medical-healthcare-icon-interface-picture-id927274662')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">HealthCare.AI Static Website<hr></h5>
+<p class="card-text">A HealthCare.AI static website,!!! Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere ipsam alias asperiores quisquam veniam quas et culpa repellat id error! Eius id soluta corrupti optio aut similique fugit dicta eveniet.<a href="https://github.com/suraj038/HealthCare.AI-Static"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/HealthCare.AI-Static"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://images.pexels.com/photos/896018/pexels-photo-896018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Jewellery Shop Management<hr></h5>
+<p class="card-text">Online Jewellery Shop is basically used to build an application program which help people to find and buy latest design of jewellery with different categories like Gold Silver, Diamond . It is useful in the way that it makes an easier way to buy products online.<a href="https://github.com/suraj038/JEWELLERY_SHOP_MANAGEMENT"><u>Read More...</u></a></p>
+<a href="https://github.com/suraj038/JEWELLERY_SHOP_MANAGEMENT"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+<div class="underlay">
+<div class="card">
+<div class="card-img-top" style="background-image: url('https://www.wrike.com/blog/content/uploads/2017/03/PREVIEW-project-portfolio-manager-820x483.jpg')"></div>
+<div class="card-block">
+<h5 class="card-title" style="font-family: 'Anton', sans-serif">Portfolio About Me..<hr></h5>
+<p class="card-text">A portfolio about me..!! have a look into iy ..!! Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt facere aliquid aperiam aliquam hic enim, perferendis ipsa? Ab, maxime aperiam.<a href="https://suraj038.github.io/"><u>Read More...</u></a></p>
+<a href="https://suraj038.github.io/index1.html"><button class="btn btn-primary text-center">Visit Site</button></a> 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="jquery-3.1.1.min.js"></script>
+<script name="toggle-grid" type="text/javascript">
+$(document).ready(function(){
+  $(document).on("keypress", function(event) {
+    // If 'alt + g' keys are pressed:
+    if (event.which === 169){
+        $('#toggle-grid').toggle();
+     }
+  });
+
+  $('#toggle-grid').on("click"
+  , function() {
+      $('.pixel-grid').toggle();
+      $('#toggle-grid').toggleClass('orange');
+    });
+});
+</script>
+</body>
+</html>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script id="rendered-js">
+var main = function () {
+  $('.push-bar').on('click', function (event) {
+    if (!isClicked) {
+      event.preventDefault();
+      $('.arrow').trigger('click');
+      isClicked = true;
+    }
+  });
+
+  $('.arrow').css({
+    'animation': 'bounce 2s infinite' });
+
+  $('.arrow').on("mouseenter", function () {
+    $('.arrow').css({
+      'animation': '',
+      'transform': 'rotate(180deg)',
+      'background-color': 'black' });
+
+  });
+  $('.arrow').on("mouseleave", function () {
+    if (!isClicked) {
+      $('.arrow').css({
+        'transform': 'rotate(0deg)',
+        'background-color': 'black' });
+
+    }
+  });
+
+  var isClicked = false;
+
+  $('.arrow').on("click", function () {
+    if (!isClicked) {
+      isClicked = true;
+      $('.arrow').css({
+        'transform': 'rotate(180deg)',
+        'background-color': 'black' });
+
+
+      $('.bar-cont').animate({
+        top: "-15px" },
+      300);
+      $('.main-cont').animate({
+        top: "0px" },
+      300);
+      // $('.news-block').css({'border': '0'});
+      // $('.underlay').slideDown(1000);
+
+    } else
+    if (isClicked) {
+      isClicked = false;
+      $('.arrow').css({
+        'transform': 'rotate(0deg)', 'background-color': 'black' });
+
+
+      $('.bar-cont').animate({
+        top: "-215px" },
+      300);
+      $('.main-cont').animate({
+        top: "-215px" },
+      300);
+    }
+    console.log('isClicked= ' + isClicked);
+  });
+
+  $('.card').on('mouseenter', function () {
+    $(this).find('.card-text').slideDown(300);
+  });
+
+  $('.card').on('mouseleave', function (event) {
+    $(this).find('.card-text').css({
+      'display': 'none' });
+
+  });
+};
+
+$(document).ready(main);
+//# sourceURL=pen.js
+    </script>
+</body>
+</html>
+
+<div class="text-info bg-transparent">
+{% endblock %}
+</div>
